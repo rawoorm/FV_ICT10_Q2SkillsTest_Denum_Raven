@@ -1,5 +1,5 @@
 
-from pyscript import document, when
+from pyscript import document
 
 # Dictionary containing the non-metal elements
 # Each element has its name, symbol, atomic number, and atomic mass
@@ -25,16 +25,14 @@ elements = {
 
 
 # Function that runs when the search button is clicked
-# The button is identified by its HTML ID: search-btn
-@when("click", "#search-btn")
 def search_element(event):
 
     # Get the user's input from the HTML text box
     # strip() removes unnecessary spaces
-    # upper() converts the input into uppercase
+    # capitalize() fixes the capitalization of element symbols
     element1 = document.getElementById("element1").value.strip().capitalize()
 
-    # Search for the entered symbol in the elements dictionary
+    # Search for the entered symbol in the dictionary
     # If the symbol does not exist, display "Element not found"
     result = elements.get(
         element1,
@@ -52,4 +50,5 @@ def search_element(event):
 
     # Display the atomic mass in the HTML
     document.getElementById("atomicmass").innerText = str(result[3])
+
 
