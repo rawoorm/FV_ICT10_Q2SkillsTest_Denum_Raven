@@ -28,11 +28,15 @@ def search_element(e):
     # Get the input from HTML
     element1 = document.getElementById("element1").value.strip().upper()
 
-    # Retrieve information from the dictionary
-    result = elements.get(
-        element1,
-        ('Element not found', '-', '-', '-')
-    )
+    # Check if input is empty
+    if not element1:
+        result = ('Please enter a symbol', '-', '-', '-')
+    else:
+        # Retrieve information from dictionary
+        result = elements.get(
+            element1,
+            ('Element not found', '-', '-', '-')
+        )
 
     # Display the result in HTML
     document.getElementById("element").innerText = result[0]
